@@ -49,7 +49,7 @@ func notifyObserver(key: String){
 }
 ```
 
-Let’s take a look at a couple classes now that makes use of all of this. In our fictional scenario we will assume i want to resign so i should send notifite to both Boss and HumanResource and my Colleague . So earch persion in my company will process will recieve messsage and process difirrence.
+Let’s take a look at a couple classes now that makes use of all of this. In our fictional scenario we will assume i want to resign so i should send notifite to both Boss and HumanResource and my Colleague . So each person in my company will process will recieve messsage and process difference.
 
 ```Swift
 class Boss : Observer{
