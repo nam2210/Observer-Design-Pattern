@@ -8,48 +8,25 @@
 
 import Foundation
 
-print("Hello, World!")
 
 
 
-class Worker1 : Observer{
-    
+class Boss : Observer{
     var observerID: Int = 1
     init() {
         register(observer: self)
     }
-    
     func update(key: String) {
-        print("Woker 1 recieve")
-        switch key {
-        case "Worker1":
-            workerDowork()
-        case "workall":
-            workerDowork()
-            break
-            
-        default: break
-            
-        }
-        
+        print("Boss is recieved Khoi's resignation letter but dont care .")
     }
-    
-    
-    
-    
-    func workerDowork(){
-        print("Worker 1 làm việc nào")
-    }
-    
     deinit {
         unregister(obsever: self)
     }
-    
 }
 
 
 
-class Worker2 : Observer{
+class HumanResource : Observer{
     
     var observerID: Int = 2
     
@@ -58,41 +35,54 @@ class Worker2 : Observer{
     }
     
     func update(key: String) {
-        print("Woker 2 recieve")
+        print("HumanResource is recieved Khoi's resignation letter .")
         switch key {
-        case "Worker2":
-            workerDowork()
-            break
-        case "workall":
-            workerDowork()
+        case "resign":
+            doResignProcess()
             break
         default:
             break;
         }
-        
     }
     
-    func workerDowork(){
-        print("Worker 2 làm việc nào")
+    func doResignProcess(){
+        print("HR : start resign process")
     }
-    
+    deinit {
+        unregister(obsever: self)
+    }
+}
+
+
+class Colleague : Observer{
+    var observerID: Int = 3
+    init() {
+        register(observer: self)
+    }
+    func update(key: String) {
+        print("Colleague is recieved Khoi's resignation letter .")
+        switch key {
+        case "resign":
+            gotoDringBeer()
+            break;
+        default:
+            break;
+        }
+    }
+    func gotoDringBeer(){
+        print("Colleague: Let go to drink beer .Send Congratulation to me")
+    }
     
     
     deinit {
         unregister(obsever: self)
     }
-    
-    
 }
 
-let worker1 = Worker1()
-let woekr2 = Worker2()
-
-
-notifyObserver(key: "Worker1")
-notifyObserver(key: "Worker2")
-notifyObserver(key: "workall")
-notifyObserver(key: "nothing")
+let boss = Boss()
+let hr = HumanResource()
+let colleague = Colleague()
+notifyObserver(key: "resign")
 
 
 

@@ -8,8 +8,6 @@
 
 import Foundation
 
-//typealias EventType = String
-
 protocol Observer{
     
     var observerID: Int{ get }
